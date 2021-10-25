@@ -1,19 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-
-    public function getId($id)
-    {
-        $mhs = DB::table('mahasiswa')->where('id', $id)->get();
-        return view('editMahasiswa', ['data_mhs' => $mhs]);
-    }
-
     public function TambahMahasiswa()
     {
         return view('TambahMahasiswa');
@@ -36,6 +28,12 @@ class MahasiswaController extends Controller
     {
         $mhs = DB::table('mahasiswa')->get();
         return view('viewMahasiswa', ['data_mhs' => $mhs]);
+    }
+
+    public function getId($id)
+    {
+        $mhs = DB::table('mahasiswa')->where('id', $id)->get();
+        return view('editMahasiswa', ['data_mhs' => $mhs]);
     }
 
     public function editData(Request $request)
